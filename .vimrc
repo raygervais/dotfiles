@@ -21,6 +21,7 @@ filetype plugin indent on
 set number				"Show line numbers
 set showcmd				"Show command in bottom bar
 set wildmenu			"Visual autocomplete for command menu
+colorscheme elflord		"Color scheme
 
 "General"
 set showmatch			"Highlight matching brace
