@@ -19,9 +19,13 @@ filetype plugin indent on
 
 "UI"
 set number				"Show line numbers
+set cursorline			"Highlight line of cursor
 set showcmd				"Show command in bottom bar
 set wildmenu			"Visual autocomplete for command menu
+
+"Color"
 colorscheme elflord		"Color scheme
+set background=dark		"Background Color 
 
 "General"
 set showmatch			"Highlight matching brace
@@ -37,6 +41,13 @@ set smarttab			"Smart tab
 set softtabstop=4		"Soft Tab
 set tabstop=4			"Tab visual spaces
 syntax enable			"Syntax Highlighting
+
+"Searching" 
+set incsearch			"Search as characters are entered
+set hlsearch			"Highlight search matches
+set ignorecase			"Ignore cases when searching
+set smartcase			"Attempt smart case searching if possible
+
 
 "Custom Functions"
 "Highlights text that surpasses 90th column
