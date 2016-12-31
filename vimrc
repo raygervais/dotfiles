@@ -6,7 +6,11 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'scrooloose/nerdtree'
+Plugin 'vim-airline/vim-airline'
+
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'tpope/vim-fugitive'
 
 Plugin 'stanangeloff/php.vim'
 
@@ -19,7 +23,6 @@ filetype plugin indent on
 
 "UI"
 set number				"Show line numbers
-set cursorline			"Highlight line of cursor
 set showcmd				"Show command in bottom bar
 set wildmenu			"Visual autocomplete for command menu
 
@@ -54,3 +57,8 @@ set smartcase			"Attempt smart case searching if possible
 highlight OverLength ctermbg=darkgrey ctermfg=white guibg=#FFD9D9
 match OverLength /\%>90v.\+/
 
+"Vim-Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_section_z = airline#section#create(['windowswap', '%3p%% ', 'linenr', ':%3v']) 
+set laststatus=2
+let g:airline_theme='bubblegum'
