@@ -51,7 +51,6 @@ set hlsearch			"Highlight search matches
 set ignorecase			"Ignore cases when searching
 set smartcase			"Attempt smart case searching if possible
 
-
 "Custom Functions"
 "Highlights text that surpasses 90th column
 highlight OverLength ctermbg=darkgrey ctermfg=white guibg=#FFD9D9
