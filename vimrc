@@ -42,6 +42,7 @@ set showmatch               "Highlight matching brace
 set textwidth=90            "Line wrap
 set autoread                "Auto read externally changed file
 set ffs=unix,dos,mac        "Unix as standard file type
+set nofoldenable            "Disable folding
 
 "Editor"
 set autoindent              "Auto-indent new lines
