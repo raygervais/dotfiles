@@ -2,7 +2,7 @@
 " Maintainer:
 "   RayGervais
 " VimRC Version:
-"   1.0
+"   2.0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set nocompatible    "be iMproved, required
@@ -15,7 +15,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'fatih/vim-go'
+Plugin 'dracula/vim', { 'name': 'dracula' }
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,7 +34,8 @@ set cursorline      "Highlight cursor line
 
 "Color"
 set termguicolors   "Enable 24bit True Color
-colorscheme PaperColor
+colorscheme dracula "Dracula Color Theme
+set t_Co=256        "Enable
 set background=dark "Dark Background
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
@@ -44,7 +48,7 @@ set encoding=utf8   "Set standard text encoding
 set nofoldenable    "Disable section folding
 
 "Editor"
-"set autoindent      "Auto-indent new lines
+set autoindent      "Auto-indent new lines
 set shiftwidth=4    "Number of auto indent width
 set expandtab       "Enable Tab-key converts to 4 spaces
 set smarttab        "Smart Tab
@@ -52,17 +56,13 @@ set softtabstop=4   "Soft Tab Amount
 set tabstop=4       "Standard Tab Amount
 set clipboard=unnamedplus "Integrate with standard clipboard
 syntax enable       "Enable Syntax Highlighting
+set nowrap          "Disable line breaks
 
 "Searching"
 set incsearch       "Search as characters are entered
-set hlsearch        "Highlight search matches
+et hlsearch        "Highlight search matches
 set ignorecase      "Ignore cases when searching
 set smartcase       "Attempt smart case search where possible
-
-"Custom Functions"
-"Highlights text that goes beyond the 90th column
-"highlight OverLength ctermbg=darkgrey ctermfg=white guibg=#FFD9D9
-"match OverLength /\%>90v.\+/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
