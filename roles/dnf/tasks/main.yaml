@@ -1,0 +1,41 @@
+---
+- name: Add RPM Fusion Repository
+  become: true
+  dnf:
+    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_version }}.noarch.rpm"
+    disable_gpg_check: true
+    state: "present"
+
+- name: Update Base Packages
+  become: true
+  dnf:
+    name: "*"
+    state: "latest"
+
+- name: Remove Unwanted Repositories
+  become: true
+  file:
+    path: "/etc/yum.repos.d/{{ item }}.repo"
+    state: "absent"
+  loop:
+    - "fedora-cisco-open264"
+    - "fedora-modular"
+    - "fedora-updates-modular"
+    - "fedora-updates-testing-modular"
+    - "fedora-updates-testing"
+
+- name: Remove Unwanted Gnome Applications
+  become: true
+  dnf:
+    name:
+      - "cheese"
+      - "gnome-logs"
+      - "gnome-clocks"
+      - "gnome-photos"
+      - "gnome-books"
+      - "gnome-music"
+      - "gnome-maps"
+      - "totem"
+      - "gnome-tour"
+      - "rhythmbox"
+    state: "absent"

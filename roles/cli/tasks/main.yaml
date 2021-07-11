@@ -1,0 +1,96 @@
+---
+- name: Install CLI Tooling
+  become: true
+  dnf:
+    name:
+      - "bat"
+      - "exa"
+      - "fish"
+      - "git"
+      - "neovim"
+      - "starship"
+      - "stow"
+      - "tmux"
+      - "alacritty"
+    state: "present"
+
+- name: Create Configuration Directories
+  file:
+    dest: "~/.config/{{ item }}"
+    state: "directory"
+  loop:
+    - "bat/themes"
+    - "fish/conf.d"
+    - "fish/functions"
+    - "git"
+    - "nvim"
+    - "alacritty"
+    - "tmux"
+
+# Bat Setup
+- name: "Bat: Copy Configuration"
+  copy:
+    src: "bat/config"
+    dest: "~/.config/bat/config"
+    mode: "0644"
+
+- name: "Bat: Copy Themes"
+  copy:
+    src: "bat/{{ item }}"
+    dest: "~/.config/bat/themes/"
+    mode: "0644"
+  with_fileglob: "bat/*.tmTheme"
+
+- name: "Bat: Build Cache"
+  shell: "bat cache --build"
+
+# Fish Setup
+- name: "Fish: Copy Configuration"
+  copy:
+    src: "{{ item }}"
+    dest: "~/.config/fish/conf.d/{{ item | basename }}"
+  with_fileglob: "fish/conf.d/*"
+
+- name: "Fish: Copy User Functions"
+  copy:
+    src: "{{ item }}"
+    dest: "~/.config/fish/functions/{{ item | basename }}"
+  with_fileglob: "fish/functions/*"
+
+- name: "Fish: Set User Shell"
+  become: true
+  user:
+    name: "raygervais"
+    shell: "/usr/bin/fish"
+
+# Alacritty Setup
+- name: "Alacritty: Copy Configuration"
+  copy:
+    src: "alacritty/alacritty.yml"
+    dest: "~/.config/alacritty/alacritty.yml"
+
+# Tmux Setup
+- name: "Tmux: Copy Configuration"
+  copy:
+    src: "tmux/tmux.conf"
+    dest: "~/.config/tmux/tmux.conf"
+
+# Git Setup
+- name: "Git: Copy Config"
+  copy:
+    src: "{{ item }}"
+    dest: "~/.config/{{ item }}"
+  loop:
+    - "git/config"
+    - "git/ignore"
+
+# Bash Clean Up
+- name: "Delete Bash Dotfiles"
+  file:
+    path: "{{ item }}"
+    state: "absent"
+  loop:
+    - "~/.bash_history"
+    - "~/.bash_logout"
+    - "~/.bash_profile"
+    - "~/.bashrc"

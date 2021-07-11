@@ -1,0 +1,7 @@
+.idea
+.buildconfig
+*.json~
+.venv/
+.vscode/
+vscode
+build

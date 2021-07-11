@@ -1,0 +1,8 @@
+---
+- name: Install Fonts for Development
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "ibm-plex-all-fonts"
