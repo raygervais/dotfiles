@@ -1,0 +1,14 @@
+---
+- name: Install Gnome Tweak Tooling
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "gnome-tweaks"
+    - "gnome-extensions"
+    - "@development-tools"
+
+- name: Set Fedora to leverage Graphics Target
+  become: true
+  shell: "sudo systemctl set-default graphical.target"

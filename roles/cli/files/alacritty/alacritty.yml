@@ -109,10 +109,10 @@ font:
     #   - (Windows) Consolas
     # family: Victor Mono
     # family: Lilex
-    # family: JetBrains Mono
+    family: JetBrains Mono
     # family: Operator Mono Lig
     # family: Dank Mono
-    family: Hasklig
+    # family: Hasklig
     # family: IBM Plex Mono
 
     # The `style` can be specified to pick a specific face.

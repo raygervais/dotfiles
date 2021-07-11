@@ -1,0 +1,16 @@
+---
+- name: Install Minimum Desktop Environment Requirements
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "@base-x"
+    - "gnome-shell"
+    - "nautilus"
+    - "firefox"
+    - "@hardware-support"
+
+- name: Set Fedora to leverage Graphics Target
+  become: true
+  shell: "sudo systemctl set-default graphical.target"

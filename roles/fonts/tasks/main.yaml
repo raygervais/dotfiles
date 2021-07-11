@@ -5,4 +5,6 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "ibm-plex-all-fonts"
+    - "gnome-font-viewer"
+    - "jetbrains-mono-fonts-all"
+    - "ibm-plex-mono-fonts"
