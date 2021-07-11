@@ -7,11 +7,10 @@
       - "exa"
       - "fish"
       - "git"
-      - "neovim"
       - "starship"
-      - "stow"
       - "tmux"
       - "alacritty"
+      - "kakoune"
     state: "present"
 
 - name: Create Configuration Directories
@@ -26,20 +25,19 @@
     - "nvim"
     - "alacritty"
     - "tmux"
+    - "starship"
+    - "kak/colors"
 
-# neovim Setup
-- name: "Neovim Setup"
+# Kakoune Setup
+- name: "Kakoune Color Setup"
   copy:
-    src: "neovim/init.vim"
-    dest: "~/.config/nvim/init.vim"
+    src: "kakoune/pastel.kak"
+    dest: "~/config/.kak/colors/pastel.kak"
 
-- name: "Install Vim Plugin Manager"
-  shell:
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-- name: "Install Vim Plugin"
-  shell: nvim +PluginInstall +qall --headless
+- name: "Kakoune Plugins"
+  git:
+    repo: https://github.com/anhsirk0/kakoune-themes
+    dest: "~/.config/kak/"
 
 # Bat Setup
 - name: "Bat: Copy Configuration"
