@@ -10,6 +10,8 @@
     - "nautilus"
     - "firefox"
     - "@hardware-support"
+    - "file-roller"
+    - "evince"
 
 - name: Change default target to graphical.target
   file:

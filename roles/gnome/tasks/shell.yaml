@@ -1,0 +1,22 @@
+---
+- name: "Desktop Wallpaper Setup"
+  copy:
+    src: "gnome/jr-korpa-9XngoIpxcEo-unsplash.jpg"
+    dest: "/usr/share/backgrounds/wallpaper.jpg"
+
+- name: "Configure Gnome Desktop"
+  dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value | string }}"
+  loop:
+    - key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/backgrounds/wallpaper.jpg'"
+
+    - key: "/org/gnome/desktop/interface/clock-format"
+      value: "'12h'"
+
+    - key: "/org/gnome/desktop/interface/clock-show-weekday"
+      value: "true"
+
+    - key: "/org/gnome/desktop/interface/monospace-font-name"
+      value: "'JetBrains Mono 12'"
