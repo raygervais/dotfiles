@@ -1,10 +1,17 @@
 ---
-- name: "Desktop Wallpaper Setup"
+- name: Desktop Wallpaper Setup
+  become: true
   copy:
-    src: "gnome/jr-korpa-9XngoIpxcEo-unsplash.jpg"
+    src: "jr-korpa-9XngoIpxcEo-unsplash.jpg"
     dest: "/usr/share/backgrounds/wallpaper.jpg"
 
+- name: Setup Dracula GTK Theme
+  git:
+    repo: https://github.com/dracula/gtk
+    dest: "~/.themes/dracula"
+
 - name: "Configure Gnome Desktop"
+  become: true
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value | string }}"
@@ -20,3 +27,6 @@
 
     - key: "/org/gnome/desktop/interface/monospace-font-name"
       value: "'JetBrains Mono 12'"
+
+    - key: "/org/gnome/desktop/interface/gtk-theme"
+      value: "'Dracula'"

@@ -5,15 +5,34 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "gnome-tweaks-app"
-    - "gnome-extensions"
-    - "neofetch"
+    - "gnome-tweaks"
+    - "gnome-extensions-app"
     - "@development-tools"
 
-- name: Install Gnome Extensions
+- name: Install Clipboard Gnome Extension
+  become: true
+  git:
+    repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
+    dest: ~/.local/share/gnome-shell/extensions/
+
+- name: Install Blur My Shell Gnome Extension
+  become: true
+  git:
+    repo: https://github.com/aunetx/blur-my-shell
+    dest: ~/.local/share/gnome-shell/extensions/
+
+- name: Build Blur Extension
+  make:
+    chdir: ~/.local/share/gnome-shell/extensions/blur-my-shell
+    target: install
+
+- name: Install Gnome Extensions via DNF
   become: true
   dnf:
-    name: "{{ item }}"
+    name: "gnome-shell-extension-{{ item }}"
     state: present
 
   loop:
+    - "user-theme"
+    - "native-window-placement"
+    - "pop-shell"

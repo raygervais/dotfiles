@@ -10,6 +10,7 @@
       - "starship"
       - "tmux"
       - "alacritty"
+      - "neovim"
       - "kakoune"
     state: "present"
 
@@ -26,14 +27,17 @@
     - "alacritty"
     - "tmux"
     - "starship"
-    - "kak/colors"
+
+# Neovim Setup
+- name: "Neovim Configuration"
+  copy:
+    src: "neovim/init.vim"
+    dest: "~/.config/nvim/init.vim"
+
+- name: "Neovim Plugin Manager"
+  shell: curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Kakoune Setup
-- name: "Kakoune Color Setup"
-  copy:
-    src: "kakoune/pastel.kak"
-    dest: "~/config/.kak/colors/pastel.kak"
-
 - name: "Kakoune Plugins"
   git:
     repo: https://github.com/anhsirk0/kakoune-themes

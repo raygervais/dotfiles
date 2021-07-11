@@ -14,6 +14,7 @@
     - "evince"
 
 - name: Change default target to graphical.target
+  become: true
   file:
     src: /usr/lib/systemd/system/graphical.target
     dest: /etc/systemd/system/default.target
