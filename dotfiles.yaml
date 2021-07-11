@@ -7,3 +7,5 @@
     - "dnf"
     - "cli"
     - "fonts"
+    - "gnome"
+    - "development"

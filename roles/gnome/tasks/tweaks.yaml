@@ -5,10 +5,15 @@
     name: "{{ item }}"
     state: present
   loop:
-    - "gnome-tweaks"
+    - "gnome-tweaks-app"
     - "gnome-extensions"
+    - "neofetch"
     - "@development-tools"
 
-- name: Set Fedora to leverage Graphics Target
+- name: Install Gnome Extensions
   become: true
-  shell: "sudo systemctl set-default graphical.target"
+  dnf:
+    name: "{{ item }}"
+    state: present
+
+  loop:

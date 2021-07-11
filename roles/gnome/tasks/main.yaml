@@ -1,3 +1,4 @@
 ---
 - include_tasks: desktop.yaml
 - include_tasks: shell.yaml
+- include_tasks: tweaks.yaml

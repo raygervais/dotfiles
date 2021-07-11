@@ -11,6 +11,8 @@
     - "firefox"
     - "@hardware-support"
 
-- name: Set Fedora to leverage Graphics Target
-  become: true
-  shell: "sudo systemctl set-default graphical.target"
+- name: Change default target to graphical.target
+  file:
+    src: /usr/lib/systemd/system/graphical.target
+    dest: /etc/systemd/system/default.target
+    state: link
