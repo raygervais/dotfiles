@@ -1,16 +1,2 @@
 ---
-- name: Install Golang
-  become: true
-  dnf:
-    name: "golang"
-    state: present
-
-- name: Install Rust
-  become: true
-  dnf:
-    name: "{{ item }}"
-    state: present
-
-  loop:
-    - "rust"
-    - "rustfmt"
+- include_tasks: languages.yaml

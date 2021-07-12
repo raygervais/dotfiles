@@ -1,0 +1,79 @@
+---
+- name: Install Gnome Builder
+  dnf:
+    name: "gnome-builder"
+    state: present
+
+- name: Import VSCode Repo GPG
+  rpm_key:
+    key: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Copy VSCode Repo
+  become: true
+  copy:
+    src: vscode.repo
+    dest: /etc/yum.repos.d/vscode.repo
+
+- name: Download updates
+  dnf:
+    update_cache: true
+    name: ""
+
+- name: Install Visual Studio Code
+  become: true
+  dnf:
+    state: present
+    name: code
+
+- name: Install Visual Studio Code extensions
+  shell: code --install-extension {{ item }}
+  loop:
+    - alexcvzz.vscode-sqlite
+    - arcticicestudio.nord-visual-studio-code
+    - atomiks.moonlight
+    - bilelmoussaoui.flatpak-vscode
+    - bungcip.better-toml
+    - cev.overnight
+    - CoenraadS.bracket-pair-colorizer-2
+    - Dart-Code.dart-code
+    - deerawan.vscode-dash
+    - DennisVash.summer-time
+    - DotJoshJohnson.xml
+    - dracula-theme.theme-dracula
+    - dzgmelody.vscode-changelog-snippets
+    - emeraldwalk.RunOnSave
+    - enkia.enki-vscode-theme
+    - enkia.tokyo-night
+    - esbenp.prettier-vscode
+    - fkrull.gtk-dark-titlebar
+    - golang.go
+    - huytd.tokyo-city
+    - inksea.inksea-theme
+    - ipedrazas.kubernetes-snippets
+    - JScearcy.rust-doc-viewer
+    - mikestead.dotenv
+    - ms-azuretools.vscode-docker
+    - ms-kubernetes-tools.vscode-kubernetes-tools
+    - ms-python.python
+    - ms-python.vscode-pylance
+    - ms-toolsai.jupyter
+    - ms-vscode-remote.remote-wsl
+    - ms-vscode.cmake-tools
+    - ms-vscode.cpptools
+    - PKief.material-icon-theme
+    - pmndrs.pmndrs
+    - quicktype.quicktype
+    - redhat.vscode-yaml
+    - rust-lang.rust
+    - sandcastle.whitespace
+    - sdras.inbedby7pm
+    - sdras.night-owl
+    - streetsidesoftware.code-spell-checker
+    - TabNine.tabnine-vscode
+    - TimGrochowski.valley-vscode
+    - twxs.cmake
+    - wayou.vscode-todo-highlight
+    - wholroyd.HCL
+    - yummygum.city-lights-theme
+    - yzhang.markdown-all-in-one
