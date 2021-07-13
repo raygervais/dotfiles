@@ -1,0 +1,25 @@
+
+[user]
+email = raygervais@hotmail.ca
+name = RayGervais
+
+[core]
+excludesfile = ~/.config/git/ignore
+pager = delta
+
+[delta]
+plus-color = "#50fa7b"
+minus-color = "#ff5555"
+syntax-theme = Dracula
+
+[init]
+defaultBranch = "main"
+
+[pull]
+ff = "only"
+
+[merge]
+ff = "only"
+
+[url "https://github.com/"]
+insteadOf = "gh:"

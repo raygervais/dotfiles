@@ -1,0 +1,22 @@
+---
+- name: Install Minimum Desktop Environment Requirements
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "@base-x"
+    - "gnome-shell"
+    - "gnome-terminal"
+    - "nautilus"
+    - "firefox"
+    - "@hardware-support"
+    - "file-roller"
+    - "evince"
+
+- name: Change default target to graphical.target
+  become: true
+  file:
+    src: /usr/lib/systemd/system/graphical.target
+    dest: /etc/systemd/system/default.target
+    state: link

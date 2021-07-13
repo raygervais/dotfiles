@@ -1,0 +1,10 @@
+---
+- name: Install Fonts for Development
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "gnome-font-viewer"
+    - "jetbrains-mono-fonts-all"
+    - "ibm-plex-mono-fonts"
