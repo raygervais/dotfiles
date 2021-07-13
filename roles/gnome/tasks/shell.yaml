@@ -22,7 +22,15 @@
     repo: https://github.com/dracula/gtk
     dest: "~/.themes/dracula"
 
-- name: "Configure Gnome Desktop"
+- name: Setup Dracula Terminal Themes
+  git:
+    repo: https://github.com/dracula/gnome-terminal
+    dest: "~/.themes/gnome-terminal"
+
+- name: Install Dracula Terminal Theme
+  shell: ~/.themes/gnome-terminal/install.sh
+
+- name: Configure Gnome Desktop
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value | string }}"
@@ -39,7 +47,7 @@
     - key: "/org/gnome/desktop/interface/gtk-theme"
       value: "'dracula'"
 
-    - key: "/org/gnome/shell/extensions/user-theme"
+    - key: "/org/gnome/shell/extensions/user-theme/name"
       value: "'Orchis-dark'"
 
     - key: "/org/gnome/desktop/interface/icon-theme"
@@ -50,3 +58,15 @@
 
     - key: "/org/gnome/desktop/interface/cursor-theme"
       value: "'breeze_cursors'"
+
+    - key: "/org/gnome/shell/favorite-apps"
+      value: "['org.gnome.Nautilus.desktop', 'org.gnome.Terminal.desktop', 'firefox.desktop']"
+
+    - key: "/org/gnome/shell/window-switcher/app-icon-mode"
+      value: "'app-icon-only'"
+
+    - key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
+      value: "false"
+
+    - key: "org/gnome/desktop/wm/preferences/button-layout"
+      value: "'appmenu,close,minimize,maximize:'"

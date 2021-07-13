@@ -32,11 +32,9 @@
     - alexcvzz.vscode-sqlite
     - arcticicestudio.nord-visual-studio-code
     - atomiks.moonlight
-    - bilelmoussaoui.flatpak-vscode
     - bungcip.better-toml
     - cev.overnight
     - CoenraadS.bracket-pair-colorizer-2
-    - Dart-Code.dart-code
     - deerawan.vscode-dash
     - DennisVash.summer-time
     - DotJoshJohnson.xml
@@ -46,7 +44,6 @@
     - enkia.enki-vscode-theme
     - enkia.tokyo-night
     - esbenp.prettier-vscode
-    - fkrull.gtk-dark-titlebar
     - golang.go
     - huytd.tokyo-city
     - inksea.inksea-theme
@@ -71,7 +68,6 @@
     - sdras.night-owl
     - streetsidesoftware.code-spell-checker
     - TabNine.tabnine-vscode
-    - TimGrochowski.valley-vscode
     - twxs.cmake
     - wayou.vscode-todo-highlight
     - wholroyd.HCL
