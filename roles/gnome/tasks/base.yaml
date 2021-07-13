@@ -7,6 +7,7 @@
   loop:
     - "@base-x"
     - "gnome-shell"
+    - "gnome-terminal"
     - "nautilus"
     - "firefox"
     - "@hardware-support"

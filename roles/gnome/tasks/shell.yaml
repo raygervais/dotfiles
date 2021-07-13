@@ -5,20 +5,28 @@
     src: "jr-korpa-9XngoIpxcEo-unsplash.jpg"
     dest: "/usr/share/backgrounds/wallpaper.jpg"
 
+- name: Install Icon Packs
+  become: true
+  dnf:
+    name: "papirus-icon-theme"
+    state: "present"
+
+- name: Install Cursor Theme
+  become: true
+  dnf:
+    name: "breeze-cursor-theme"
+    state: "present"
+
 - name: Setup Dracula GTK Theme
   git:
     repo: https://github.com/dracula/gtk
     dest: "~/.themes/dracula"
 
 - name: "Configure Gnome Desktop"
-  become: true
   dconf:
     key: "{{ item.key }}"
     value: "{{ item.value | string }}"
   loop:
-    - key: "/org/gnome/desktop/background/picture-uri"
-      value: "'file:///usr/share/backgrounds/wallpaper.jpg'"
-
     - key: "/org/gnome/desktop/interface/clock-format"
       value: "'12h'"
 
@@ -29,4 +37,16 @@
       value: "'JetBrains Mono 12'"
 
     - key: "/org/gnome/desktop/interface/gtk-theme"
-      value: "'Dracula'"
+      value: "'dracula'"
+
+    - key: "/org/gnome/shell/extensions/user-theme"
+      value: "'Orchis-dark'"
+
+    - key: "/org/gnome/desktop/interface/icon-theme"
+      value: "'Papirus-Dark'"
+
+    - key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/backgrounds/wallpaper.jpg'"
+
+    - key: "/org/gnome/desktop/interface/cursor-theme"
+      value: "'breeze_cursors'"
