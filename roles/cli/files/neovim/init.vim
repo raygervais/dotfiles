@@ -39,6 +39,7 @@ Plug 'folke/tokyonight.nvim'
 
 " Helpers
 Plug 'junegunn/vim-easy-align'
+Plug 'KabbAmine/zeavim.vim'
 
 call plug#end()
 

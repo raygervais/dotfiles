@@ -1,9 +1,4 @@
 ---
-- name: Install Gnome Builder
-  dnf:
-    name: "gnome-builder"
-    state: present
-
 - name: Import VSCode Repo GPG
   rpm_key:
     key: https://packages.microsoft.com/keys/microsoft.asc
@@ -54,12 +49,10 @@
     - ms-kubernetes-tools.vscode-kubernetes-tools
     - ms-python.python
     - ms-python.vscode-pylance
-    - ms-toolsai.jupyter
     - ms-vscode-remote.remote-wsl
     - ms-vscode.cmake-tools
     - ms-vscode.cpptools
     - PKief.material-icon-theme
-    - pmndrs.pmndrs
     - quicktype.quicktype
     - redhat.vscode-yaml
     - rust-lang.rust
@@ -70,6 +63,11 @@
     - TabNine.tabnine-vscode
     - twxs.cmake
     - wayou.vscode-todo-highlight
-    - wholroyd.HCL
     - yummygum.city-lights-theme
     - yzhang.markdown-all-in-one
+
+- name: Install Zeal Documentation Browser for
+  become: true
+  dnf:
+    name: zeal
+    state: present
