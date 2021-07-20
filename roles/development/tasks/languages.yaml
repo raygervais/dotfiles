@@ -2,8 +2,11 @@
 - name: Install Golang
   become: true
   dnf:
-    name: "golang"
+    name: "{{ item }}"
     state: present
+  loop:
+    - "golang"
+    - "golang-x-tools-gopls"
 
 - name: Install Rust
   become: true

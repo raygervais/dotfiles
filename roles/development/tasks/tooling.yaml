@@ -26,9 +26,7 @@
   loop:
     - alexcvzz.vscode-sqlite
     - arcticicestudio.nord-visual-studio-code
-    - atomiks.moonlight
     - bungcip.better-toml
-    - cev.overnight
     - CoenraadS.bracket-pair-colorizer-2
     - deerawan.vscode-dash
     - DennisVash.summer-time
