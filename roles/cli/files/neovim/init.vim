@@ -108,7 +108,7 @@ let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
     buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
   end
 
-  local servers = {'pyls', 'gopls', 'rls', 'solargraph', 'clangd' }
+  local servers = {'gopls', 'rls', 'clangd' }
   for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
       on_attach = on_attach,
