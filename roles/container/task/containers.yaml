@@ -1,0 +1,26 @@
+---
+- name: Install Container Runtime
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "podman"
+    - "podman-compose"
+    - "podman-docker"
+    - "containerd"
+
+- name: Install K8s Platform
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "kubernetes"
+    - "kubernetes-master"
+    - "kubernetes-client"
+    - "kubernetes-node"
+
+- name: Install minikube
+  yum:
+    src: https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
