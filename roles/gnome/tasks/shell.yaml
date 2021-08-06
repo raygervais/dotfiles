@@ -42,7 +42,7 @@
       value: "true"
 
     - key: "/org/gnome/desktop/interface/monospace-font-name"
-      value: "'JetBrains Mono 12'"
+      value: "'Fira Code 12'"
 
     - key: "/org/gnome/desktop/interface/gtk-theme"
       value: "'dracula'"

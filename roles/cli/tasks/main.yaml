@@ -60,6 +60,12 @@
     dest: "~/.config/fish/conf.d/{{ item | basename }}"
   with_fileglob: "fish/conf.d/*"
 
+- name: "Fish: Copy Completion"
+  copy:
+    src: "{{ item }}"
+    dest: "~/.config/fish/completions/{{ item | basename }}"
+  with_fileglob: "fish/completions/*"
+
 - name: "Fish: Copy User Functions"
   copy:
     src: "{{ item }}"
