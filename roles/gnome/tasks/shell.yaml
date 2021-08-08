@@ -27,9 +27,6 @@
     repo: https://github.com/dracula/gnome-terminal
     dest: "~/.themes/gnome-terminal"
 
-- name: Install Dracula Terminal Theme
-  shell: ~/.themes/gnome-terminal/install.sh
-
 - name: Configure Gnome Desktop
   dconf:
     key: "{{ item.key }}"
@@ -68,5 +65,5 @@
     - key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
       value: "false"
 
-    - key: "org/gnome/desktop/wm/preferences/button-layout"
+    - key: "/org/gnome/desktop/wm/preferences/button-layout"
       value: "'appmenu,close,minimize,maximize:'"

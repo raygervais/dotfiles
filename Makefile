@@ -7,6 +7,6 @@ setup: ## Install tools need to run playbook
 	@sudo dnf install --assumeyes ansible python3-psutil
 
 run: ## Run the Ansible playbook
-	@ANSIBLE_NOCOWS=1 ansible-playbook \
+	@ANSIBLE_NOCOWS=1 ansible-playbook --verbose \
 	--ask-become-pass --inventory localhost, \
 	dotfiles.yaml

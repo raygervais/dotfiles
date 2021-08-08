@@ -9,6 +9,7 @@
     - "podman-compose"
     - "podman-docker"
     - "containerd"
+    - "crun"
 
 - name: Install K8s Platform
   become: true
