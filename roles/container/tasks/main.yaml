@@ -1,0 +1,51 @@
+---
+
+- name: Install Container Runtime
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "podman"
+    - "podman-compose"
+    - "podman-docker"
+    - "containerd"
+    - "crun"
+
+- name: Install K8s Platform
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "kubernetes"
+    - "kubernetes-master"
+    - "kubernetes-client"
+    - "kubernetes-node"
+
+
+- name: Download Minikube
+  get_url:
+    url: https://storage.googleapis.com/minikube/releases/latest/minikube-latest.x86_64.rpm
+    dest: /tmp/
+
+
+- name: Install minikube
+  become: true
+  dnf:
+    name: /tmp/minikube-latest.x86_64.rpm
+    state: present
+    disable_gpg_check: true 
+
+- name: Configure Podman + Kubernetes
+  become: true
+  lineinfile:
+    path: /etc/sudoers
+    line: "raygervais ALL=(ALL) NOPASSWD: /usr/bin/podman"
+
+- name: Create Podman as Docker CLI Config
+  become: true
+  file:
+    path: /etc/containers/nodocker
+    state: touch
+  
