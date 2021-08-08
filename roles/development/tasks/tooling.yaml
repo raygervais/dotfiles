@@ -30,7 +30,6 @@
     - bungcip.better-toml
     - CoenraadS.bracket-pair-colorizer-2
     - deerawan.vscode-dash
-    - DennisVash.summer-time
     - DotJoshJohnson.xml
     - dracula-theme.theme-dracula
     - dzgmelody.vscode-changelog-snippets
@@ -46,24 +45,17 @@
     - mikestead.dotenv
     - ms-azuretools.vscode-docker
     - ms-kubernetes-tools.vscode-kubernetes-tools
-    - ms-python.python
-    - ms-python.vscode-pylance
-    - ms-vscode-remote.remote-wsl
     - ms-vscode.cmake-tools
     - ms-vscode.cpptools
     - PKief.material-icon-theme
     - quicktype.quicktype
     - redhat.vscode-yaml
     - rust-lang.rust
-    - sandcastle.whitespace
-    - sdras.inbedby7pm
-    - sdras.night-owl
-    - streetsidesoftware.code-spell-checker
     - TabNine.tabnine-vscode
     - twxs.cmake
     - wayou.vscode-todo-highlight
-    - yummygum.city-lights-theme
     - yzhang.markdown-all-in-one
+    - mathcale.theme-dracula-refined
 
 - name: Install Zeal Documentation Browser for
   become: true
