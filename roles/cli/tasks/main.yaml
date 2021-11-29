@@ -9,7 +9,6 @@
       - "git"
       - "starship"
       - "tmux"
-      - "alacritty"
       - "neovim"
     state: "present"
 
@@ -28,7 +27,7 @@
     - "starship"
 
 # Neovim Setup
-- name: "Neovim Configuration"
+- name: Neovim Configuration
   copy:
     src: "neovim/init.vim"
     dest: "~/.config/nvim/init.vim"
@@ -36,62 +35,85 @@
 - name: "Neovim Plugin Manager"
   shell: curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Helix Setup
+- name: Install Helix
+  become: true
+  ansible.builtin.shell: |
+    # Download latest release
+    WILD_CARD=x86_64-linux.tar.xz
+
+    cd /tmp/
+    curl -s https://api.github.com/repos/helix-editor/helix/releases/latest \
+    | grep "browser_download_url.*x86_64-linux.tar.xz" \
+    | cut -d : -f 2,3 \
+    | tr -d \" \
+    | wget -qi -
+
+    mv WILDCARD helix.tar
+    tar -xvf helix.tar
+
+    mv helix/hx /usr/bin/hx
+
+- name: Helix - Config Setup
+  copy:
+    src: "helix/config.toml"
+    dest: "~/.config/helix/config.toml"
+  
+- Name: "Helix: Config Theme"
+  copy:
+    src: "helix/gruvbox-material.toml"
+    dest: "~/.config/helix/themes/gruvbox-material.toml"
+
 # Bat Setup
-- name: "Bat: Copy Configuration"
+- name: Bat - Copy Configuration
   copy:
     src: "bat/config"
     dest: "~/.config/bat/config"
     mode: "0644"
 
-- name: "Bat: Copy Themes"
+- name: Bat - Copy Themes
   copy:
     src: "{{ item }}"
     dest: "~/.config/bat/themes/"
     mode: "0644"
   with_fileglob: "bat/*.tmTheme"
 
-- name: "Bat: Build Cache"
+- name: Bat - Build Cache
   shell: "bat cache --build"
 
 # Fish Setup
-- name: "Fish: Copy Configuration"
+- name: Fish - Copy Configuration
   copy:
     src: "{{ item }}"
     dest: "~/.config/fish/conf.d/{{ item | basename }}"
   with_fileglob: "fish/conf.d/*"
 
-- name: "Fish: Copy Completion"
+- name: Fish - Copy Completion
   copy:
     src: "{{ item }}"
     dest: "~/.config/fish/completions/{{ item | basename }}"
   with_fileglob: "fish/completions/*"
 
-- name: "Fish: Copy User Functions"
+- name: Fish - Copy User Functions
   copy:
     src: "{{ item }}"
     dest: "~/.config/fish/functions/{{ item | basename }}"
   with_fileglob: "fish/functions/*"
 
-- name: "Fish: Set User Shell"
+- name: Fish - Set User Shell
   become: true
   user:
     name: "raygervais"
     shell: "/usr/bin/fish"
 
-# Alacritty Setup
-- name: "Alacritty: Copy Configuration"
-  copy:
-    src: "alacritty/alacritty.yml"
-    dest: "~/.config/alacritty/alacritty.yml"
-
 # Tmux Setup
-- name: "Tmux: Copy Configuration"
+- name: Tmux - Copy Configuration
   copy:
     src: "tmux/tmux.conf"
     dest: "~/.config/tmux/tmux.conf"
 
 # Git Setup
-- name: "Git: Copy Config"
+- name: Git - Copy Config
   copy:
     src: "{{ item }}"
     dest: "~/.config/{{ item }}"
@@ -99,14 +121,14 @@
     - "git/config"
     - "git/ignore"
 
-- name: "Install rsfetch"
+- name: Install rsfetch
   become: true
   copy:
     src: "rsfetch/rsfetch"
     dest: "/usr/local/bin/rsfetch"
 
 # Bash Clean Up
-- name: "Delete Bash Dotfiles"
+- name: Delete Bash Dotfiles
   file:
     path: "{{ item }}"
     state: "absent"
