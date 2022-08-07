@@ -11,3 +11,4 @@
     - "development"
     - "container"
     - "nvidia"
+    - "flatpak"

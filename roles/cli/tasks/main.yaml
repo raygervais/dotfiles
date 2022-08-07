@@ -97,13 +97,13 @@
     - "git/ignore"
 
 # Conigure Tomorrow Night Theme via Gogh.sh
-- name: Clone gohn
+- name: Clone gogh
   git:
     repo: https://github.com/Gogh-Co/Gogh
-    dest: /tmp/
+    dest: /tmp/gogh
 
 - name: setup Tomorrow Night theme
-  shell: TERMINAL=gnome-terminal /tmp/Gogh.git/themes/tomorrow-night.sh
+  shell: TERMINAL=gnome-terminal /tmp/gogh/themes/tomorrow-night.sh
 
 # Bash Clean Up
 - name: Delete Bash Dotfiles

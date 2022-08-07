@@ -1,0 +1,30 @@
+---
+
+- name: Install flatpak
+  dnf:
+    name: flatpak
+    ensure: present
+
+- name: Enable flathub
+  become: true
+  community.general.flatpak:
+    state: present
+    name:  https://flathub.org/repo/flathub.flatpakrepo
+
+- name: Install Multimedia Applications, Bitwig
+  community.general.flatpak:
+    state: present
+    name: {{ item }}
+  loop:
+    - com.bitwig.BitwigStudio
+    - org.surg_synth_team.surge-xt
+
+  
+- name: Install Flatpak Applications
+  community.general.flatpak:
+    state: present
+    name: {{ item }}
+  loop:
+    - com.spotify.Client
+    - com.discordapp.Discord
+    - com.github.tchx84.Flatseal

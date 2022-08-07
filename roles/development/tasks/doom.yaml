@@ -1,0 +1,25 @@
+---
+- name: Install Emacs
+  dnf:
+    ensure: present
+    name: emacs
+
+- name: Clone Doom Emacs
+  git:
+    repo: https://github.com/doomemacs/doomemacs
+    depth: 1
+    dest: ~/.emacs.d
+
+- name: Install Doom Emacs
+  shell: ~/.emacs.d/bin/doom install
+
+- name: Copy config.el and init.el
+  copy:
+    src: doom/{{ item }} 
+    dest: ~/.doom/{{ item }}
+  loop:
+    - config.el
+    - init.el
+
+- name: Sync Doom Emacs
+  shell: ~/.emacs.d/bin/doom sync

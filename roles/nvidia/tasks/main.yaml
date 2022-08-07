@@ -6,5 +6,4 @@
   loop:
     - "akmod-nvidia"
     - "nvidia-settings"
-  when: lspci | grep nvidia -iq
-
+  when: $(lspci | grep nvidia -iq) == 'nvidia'
