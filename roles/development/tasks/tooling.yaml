@@ -25,43 +25,18 @@
 - name: Install Visual Studio Code extensions
   shell: code --install-extension {{ item }}
   loop:
-    - alexcvzz.vscode-sqlite
-    - arcticicestudio.nord-visual-studio-code
     - bungcip.better-toml
-    - CoenraadS.bracket-pair-colorizer-2
-    - deerawan.vscode-dash
-    - DotJoshJohnson.xml
-    - dracula-theme.theme-dracula
-    - dzgmelody.vscode-changelog-snippets
-    - emeraldwalk.RunOnSave
-    - enkia.enki-vscode-theme
-    - enkia.tokyo-night
-    - esbenp.prettier-vscode
+    - doggy8088.quicktype-refresh
     - golang.go
-    - huytd.tokyo-city
-    - inksea.inksea-theme
-    - ipedrazas.kubernetes-snippets
-    - JScearcy.rust-doc-viewer
-    - mikestead.dotenv
-    - ms-azuretools.vscode-docker
     - ms-kubernetes-tools.vscode-kubernetes-tools
-    - ms-vscode.cmake-tools
-    - ms-vscode.cpptools
-    - PKief.material-icon-theme
-    - quicktype.quicktype
-    - redhat.vscode-yaml
-    - rust-lang.rust
+    - rust-lang.rust-analyzer
     - TabNine.tabnine-vscode
-    - twxs.cmake
+    - Tyriar.sort-lines
     - wayou.vscode-todo-highlight
     - yzhang.markdown-all-in-one
-    - mathcale.theme-dracula-refined
-
-- name: Install Zeal Documentation Browser for
-  become: true
-  dnf:
-    name: zeal
-    state: present
+    - muhammad-sammy.solarized-sharp-vscode
+    - swjh.base16-leaf-tomorrow-vscode
+    - rastikerdar.vscode-seedling-icon-theme
 
 - name: Create Development Directory
   file:

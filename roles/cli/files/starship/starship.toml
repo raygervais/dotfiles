@@ -1,11 +1,11 @@
-add_newline = false
+add_newline = true
 
-[character]
-success_symbol = "[𝝺](bold red)"
-error_symbol = "[𝝺](bold red)"
+[username]
+show_always = true
+format = "[$user ](italic purple)"
 
 [directory]
-format = "[$path](bold purple) "
+format = "[$path](italic bold cyan) "
 truncation_length = 6
 
 [cmd_duration]

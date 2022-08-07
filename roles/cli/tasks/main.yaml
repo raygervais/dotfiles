@@ -7,9 +7,11 @@
       - "exa"
       - "fish"
       - "git"
+      - "git-delta"
       - "starship"
       - "tmux"
       - "neovim"
+      - "starship"
     state: "present"
 
 - name: Create Configuration Directories
@@ -22,47 +24,20 @@
     - "fish/functions"
     - "git"
     - "nvim"
-    - "alacritty"
     - "tmux"
     - "starship"
 
 # Neovim Setup
 - name: Neovim Configuration
   copy:
-    src: "neovim/init.vim"
-    dest: "~/.config/nvim/init.vim"
+    src: "neovim/init.lua"
+    dest: "~/.config/nvim/init.lua"
 
-- name: "Neovim Plugin Manager"
-  shell: curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Helix Setup
-- name: Install Helix
-  become: true
-  ansible.builtin.shell: |
-    # Download latest release
-    WILD_CARD=x86_64-linux.tar.xz
-
-    cd /tmp/
-    curl -s https://api.github.com/repos/helix-editor/helix/releases/latest \
-    | grep "browser_download_url.*x86_64-linux.tar.xz" \
-    | cut -d : -f 2,3 \
-    | tr -d \" \
-    | wget -qi -
-
-    mv WILDCARD helix.tar
-    tar -xvf helix.tar
-
-    mv helix/hx /usr/bin/hx
-
-- name: Helix - Config Setup
-  copy:
-    src: "helix/config.toml"
-    dest: "~/.config/helix/config.toml"
-  
-- Name: "Helix: Config Theme"
-  copy:
-    src: "helix/gruvbox-material.toml"
-    dest: "~/.config/helix/themes/gruvbox-material.toml"
+- name: Neovim Packer Package Manager
+  git: 
+    repo: https://github.com/wbthomason/packer.nvim
+    dest:  ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    depth: 1
 
 # Bat Setup
 - name: Bat - Copy Configuration
@@ -121,11 +96,14 @@
     - "git/config"
     - "git/ignore"
 
-- name: Install rsfetch
-  become: true
-  copy:
-    src: "rsfetch/rsfetch"
-    dest: "/usr/local/bin/rsfetch"
+# Conigure Tomorrow Night Theme via Gogh.sh
+- name: Clone gohn
+  git:
+    repo: https://github.com/Gogh-Co/Gogh
+    dest: /tmp/
+
+- name: setup Tomorrow Night theme
+  shell: TERMINAL=gnome-terminal /tmp/Gogh.git/themes/tomorrow-night.sh
 
 # Bash Clean Up
 - name: Delete Bash Dotfiles

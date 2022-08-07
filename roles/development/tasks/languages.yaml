@@ -1,5 +1,5 @@
 ---
-- name: Install Golang
+- name: Install Programming Languages and Toolchains
   become: true
   dnf:
     name: "{{ item }}"
@@ -8,12 +8,10 @@
     - "golang"
     - "golang-x-tools-gopls"
 
-- name: Install Rust
+- name: Install Rustup Toolchain Manager
   become: true
-  dnf:
-    name: "{{ item }}"
-    state: present
+  shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-  loop:
-    - "rust"
-    - "rustfmt"
+- name: Install Rustup Toolchain
+  become: true
+  shell: rustup component add rust-analysis rust-src cargo clippy

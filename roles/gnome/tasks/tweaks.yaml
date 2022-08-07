@@ -21,10 +21,10 @@
     repo: https://github.com/aunetx/blur-my-shell
     dest: ~/.local/share/gnome-shell/extensions/
 
-# - name: Build Blur Extension
-#   make:
-#     chdir: ~/.local/share/gnome-shell/extensions/blur-my-shell
-#     target: install
+- name: Build Blur Extension
+  make:
+    chdir: ~/.local/share/gnome-shell/extensions/blur-my-shell
+    target: install
 
 - name: Install Gnome Extensions via DNF
   become: true
@@ -36,3 +36,4 @@
     - "user-theme"
     - "native-window-placement"
     - "pop-shell"
+    - "gsconnect"

@@ -1,6 +1,5 @@
 
 [user]
-email = raygervais@hotmail.ca
 name = RayGervais
 
 [core]
@@ -10,7 +9,7 @@ pager = delta
 [delta]
 plus-color = "#50fa7b"
 minus-color = "#ff5555"
-syntax-theme = Dracula
+syntax-theme = base16
 
 [init]
 defaultBranch = "main"

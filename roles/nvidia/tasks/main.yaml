@@ -1,0 +1,10 @@
+- name: Install Nvidia Drivers
+  become: true
+  dnf:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - "akmod-nvidia"
+    - "nvidia-settings"
+  when: lspci | grep nvidia -iq
+
