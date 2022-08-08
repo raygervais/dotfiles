@@ -29,12 +29,18 @@
       value: "true"
 
     - key: "/org/gnome/desktop/interface/monospace-font-name"
-      value: "'Fira Code 14'"
+      value: "'IBM Plex Mono 14'"
 
     - key: "/org/gnome/desktop/interface/icon-theme"
       value: "'Papirus-Dark'"
 
+    - key: "/org/gnome/desktop/interface/color-scheme"
+      value: "'prefer-dark'"
+
     - key: "/org/gnome/desktop/background/picture-uri"
+      value: "'file:///usr/share/backgrounds/wallpaper.jpg'"
+
+    - key: "/org/gnome/desktop/background/picture-uri-dark"
       value: "'file:///usr/share/backgrounds/wallpaper.jpg'"
 
     - key: "/org/gnome/desktop/interface/cursor-theme"

@@ -1,3 +1,5 @@
+---
+
 - name: Install Nvidia Drivers
   become: true
   dnf:
@@ -6,4 +8,3 @@
   loop:
     - "akmod-nvidia"
     - "nvidia-settings"
-  when: $(lspci | grep nvidia -iq) == 'nvidia'

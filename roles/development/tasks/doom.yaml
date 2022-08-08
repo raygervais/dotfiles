@@ -1,5 +1,6 @@
 ---
 - name: Install Emacs
+  become: true
   dnf:
     ensure: present
     name: emacs

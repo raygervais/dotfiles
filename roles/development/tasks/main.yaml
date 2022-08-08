@@ -1,3 +1,1 @@
----
-- include_tasks: languages.yaml
-- include_tasks: tooling.yaml
+- include_tasks: doom.yaml

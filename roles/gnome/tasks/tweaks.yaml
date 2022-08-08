@@ -15,16 +15,16 @@
     repo: https://github.com/Tudmotu/gnome-shell-extension-clipboard-indicator.git
     dest: ~/.local/share/gnome-shell/extensions/
 
-- name: Install Blur My Shell Gnome Extension
-  become: true
-  git:
-    repo: https://github.com/aunetx/blur-my-shell
-    dest: ~/.local/share/gnome-shell/extensions/
+# - name: Install Blur My Shell Gnome Extension
+#   become: true
+#   git:
+#     repo: https://github.com/aunetx/blur-my-shell
+#     dest: ~/.local/share/gnome-shell/extensions/
 
-- name: Build Blur Extension
-  make:
-    chdir: ~/.local/share/gnome-shell/extensions/blur-my-shell
-    target: install
+# - name: Build Blur Extension
+#   make:
+#     chdir: ~/.local/share/gnome-shell/extensions/blur-my-shell
+#     target: install
 
 - name: Install Gnome Extensions via DNF
   become: true

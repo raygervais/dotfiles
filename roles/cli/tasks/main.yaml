@@ -11,7 +11,6 @@
       - "starship"
       - "tmux"
       - "neovim"
-      - "starship"
     state: "present"
 
 - name: Create Configuration Directories
@@ -104,6 +103,12 @@
 
 - name: setup Tomorrow Night theme
   shell: TERMINAL=gnome-terminal /tmp/gogh/themes/tomorrow-night.sh
+
+# Starship
+- name: Setup starship
+  copy:
+    src: "starship/starship.toml"
+    dest: "~/.config/starship.toml"
 
 # Bash Clean Up
 - name: Delete Bash Dotfiles
