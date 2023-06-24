@@ -12,15 +12,6 @@
     state: present
     name:  https://flathub.org/repo/flathub.flatpakrepo
 
-# - name: Install Multimedia Applications, Bitwig
-#   community.general.flatpak:
-#     state: present
-#     name: {{ item }}
-#   loop:
-#     - com.bitwig.BitwigStudio
-#     - org.surg_synth_team.surge-xt
-
-
 # - name: Install Flatpak Applications
 #   community.general.flatpak:
 #     state: present
@@ -29,3 +20,6 @@
 #     - com.spotify.Client
 #     - com.discordapp.Discord
 #     - com.github.tchx84.Flatseal
+#     - dev.lapce.Lapce
+#     - com.github.GradienceTeam.Gradience
+#     - md.obsidian.Obsidian

@@ -5,12 +5,14 @@
     name:
       - "bat"
       - "exa"
+      - "ripgrep"
       - "fish"
+      - "procs"
+      - "zillej"
       - "git"
       - "git-delta"
       - "starship"
       - "tmux"
-      - "neovim"
     state: "present"
 
 - name: Create Configuration Directories

@@ -7,9 +7,10 @@
   loop:
     - "golang"
     - "golang-x-tools-gopls"
+    - "make"
 
 - name: Install Rustup Toolchain Manager
   shell: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 - name: Install Rustup Toolchain
-  shell: rustup component add rust-analysis rust-src cargo clippy
+  shell: rustup component add rust-analysis rust-src cargo clippy rustfmt

@@ -9,7 +9,7 @@ pager = delta
 [delta]
 plus-color = "#50fa7b"
 minus-color = "#ff5555"
-syntax-theme = base16
+syntax-theme = solarized_dark
 
 [init]
 defaultBranch = "main"

@@ -9,6 +9,7 @@
     - "podman"
     - "podman-compose"
     - "podman-docker"
+    - "podman-desktop"
     - "containerd"
     - "crun"
 

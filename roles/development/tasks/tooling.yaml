@@ -22,6 +22,7 @@
     state: present
     name: code
 
+# TODO: review modern extensions in use. 
 - name: Install Visual Studio Code extensions
   shell: code --install-extension {{ item }}
   loop:
@@ -30,12 +31,9 @@
     - golang.go
     - ms-kubernetes-tools.vscode-kubernetes-tools
     - rust-lang.rust-analyzer
-    - TabNine.tabnine-vscode
     - Tyriar.sort-lines
     - wayou.vscode-todo-highlight
     - yzhang.markdown-all-in-one
-    - muhammad-sammy.solarized-sharp-vscode
-    - swjh.base16-leaf-tomorrow-vscode
     - rastikerdar.vscode-seedling-icon-theme
 
 - name: Create Development Directory

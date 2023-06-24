@@ -1,0 +1,11 @@
+---
+- name: Install Multimedia Applications, Bitwig
+  community.general.flatpak:
+    state: present
+    name: {{ item }}
+  loop:
+    - com.bitwig.BitwigStudio
+    - org.surg_synth_team.surge-xt
+  
+
+
